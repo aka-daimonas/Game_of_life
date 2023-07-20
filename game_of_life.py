@@ -5,8 +5,8 @@ import time
 import copy
 import sys
 
-WIDTH = 60
-HEIGHT = 20
+WIDTH = 45
+HEIGHT = 15
 
 nextCells = []
 for x in range(WIDTH):
@@ -16,16 +16,16 @@ for x in range(WIDTH):
             column.append('#')      # Add a living cell
         else:
             column.append(' ')      # Add a dead cell
-    nextCells.append(column)        
+    nextCells.append(column)
 try:
-    while True:         
+    while True:
         print('\n\n\n\n\n\n\n')
         currentCells = copy.deepcopy(nextCells)
         # Print currentCells on the screen
         for y in range(HEIGHT):
             for x in range(WIDTH):
                 print(currentCells[x][y], end='')
-            print()     
+            print()
         # Calculate the next step's cells based on current step's cell
         for x in range(WIDTH):
             for y in range(HEIGHT):
@@ -37,9 +37,9 @@ try:
                 # Count the number of living neighbours
                 numNeighbours = 0
                 if currentCells[leftCoord][aboveCoord] == '#':
-                    numNeighbours += 1      
+                    numNeighbours += 1
                 if currentCells[x][aboveCoord] == '#':
-                    numNeighbours += 1     
+                    numNeighbours += 1
                 if currentCells[rightCoord][aboveCoord] == '#':
                     numNeighbours += 1
                 if currentCells[leftCoord][belowCoord] == '#':
@@ -48,7 +48,7 @@ try:
                     numNeighbours += 1
                 if currentCells[rightCoord][belowCoord] == '#':
                     numNeighbours += 1
-                    
+
                 if currentCells[x][y] == '#' and (numNeighbours == 2 or numNeighbours == 3):
                     # Living cells with 2 or 3 neighbours stay alive
                     nextCells[x][y] = '#'
